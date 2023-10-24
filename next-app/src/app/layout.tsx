@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ThemeProvider from './theme-provider'
 import { Inter } from 'next/font/google'
+import Link from 'next/link'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -12,13 +13,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: {
   children: React.ReactNode
-  analytics: React.ReactNode
-  team: React.ReactNode
+  navbars: React.ReactNode
+  footer: React.ReactNode
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <ThemeProvider>{props.children}</ThemeProvider>
+      <ThemeProvider>
+        {props.navbars}
+        {props.children}
+        {props.footer}
+      </ThemeProvider>
       </body>
     </html>
   )
